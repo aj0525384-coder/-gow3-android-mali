@@ -1,0 +1,29 @@
+
+name: GoW3 Mali Android Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Check project files
+        run: |
+          echo "Checking GoW3 Mali project"
+          find android -type f
+
+      - name: Build status
+        run: |
+          echo "Project structure checked."
+          echo "Gradle configuration is the next step."
